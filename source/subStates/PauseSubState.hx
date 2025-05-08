@@ -81,6 +81,9 @@ class PauseSubState extends MusicBeatSubState
 			//PlayState.songDiff
 		];
 
+		if(PlayState.songDiff == "remix")
+			textArray[0] += " - REMIX";
+
 		var alreadyDone:Bool = false;
 		if(PlayState.SONG.composer != null && PlayState.SONG.arranger != null) {
 			if(PlayState.SONG.composer == PlayState.SONG.arranger) {

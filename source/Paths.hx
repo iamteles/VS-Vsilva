@@ -169,8 +169,8 @@ class Paths
 		var diffPref:String = '';
 		
 		// erect
-		if(['erect', 'nightmare'].contains(diff))
-			diffPref = '-erect';
+		if(['erect', 'nightmare', 'remix'].contains(diff))
+			diffPref = '-remix';
 		
 		if(fileExists('$song$diffPref$prefix.ogg'))
 			return '$song$diffPref$prefix';

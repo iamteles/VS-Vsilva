@@ -8,14 +8,18 @@ import flixel.math.FlxMath;
 import flixel.util.FlxColor;
 import backend.game.GameData.MusicBeatState;
 import objects.menu.Alphabet;
-import flixel.text.FlxText;
+import flixel.util.FlxTimer;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.input.gamepad.FlxGamepad;
 import backend.song.SongData;
+import flixel.text.FlxText;
 
 using StringTools;
 
 class DebugState extends MusicBeatState
 {
-	var optionShit:Array<String> = ["freeplay", "credits", "options"];
+	var optionShit:Array<String> = ["play", "credits", "options"];
 	static var curSelected:Int = 0;
 
 	var optionGroup:FlxTypedGroup<Alphabet>;
@@ -28,11 +32,19 @@ class DebugState extends MusicBeatState
 		//Main.setMouse(true);
 
 		// Updating Discord Rich Presence
-		DiscordIO.changePresence("In the Debug Menu...");
+		DiscordIO.changePresence("In the Main Menu...");
 
-		var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.fromRGB(80,80,80));
+		/*var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.fromRGB(80,80,80));
 		bg.screenCenter();
 		add(bg);
+		*/
+
+		var logo = new FlxSprite(0, 0);
+		logo.loadGraphic(Paths.image("logo"));
+		logo.scale.set(0.8,0.8);
+		logo.x -= 12;
+		logo.y -= 80;
+		add(logo);
 
 		optionGroup = new FlxTypedGroup<Alphabet>();
 		add(optionGroup);
@@ -43,14 +55,16 @@ class DebugState extends MusicBeatState
 			item.align = CENTER;
 			item.text = optionShit[i].toUpperCase();
 			item.x = FlxG.width / 2;
-			item.y = 50 + ((item.height + 100) * i);
+			item.y = FlxG.height - 230 + ((item.height + 13) * i);
 			item.ID = i;
 			optionGroup.add(item);
+			item.bold = true;
 		}
 
-		var doidoSplash:String = 'Doido Engine Kai ${FlxG.stage.application.meta.get('version')}';
+		var doidoSplash:String = 'Doido Engine Kai v3.4.1k';
+		var funkySplash:String = 'FNF: VS Vsilva - Remastered';
 
-		var splashTxt = new FlxText(4, 0, 0, '$doidoSplash');
+		var splashTxt = new FlxText(4, 0, 0, '$doidoSplash\n$funkySplash');
 		splashTxt.setFormat(Main.gFont, 18, 0xFFFFFFFF, LEFT);
 		splashTxt.setBorderStyle(OUTLINE, 0xFF000000, 1.5);
 		splashTxt.y = FlxG.height - splashTxt.height - 4;
@@ -72,28 +86,10 @@ class DebugState extends MusicBeatState
 		{
 			switch(optionShit[curSelected])
 			{
-				case "week 1": // any week
-					var daWeek = SongData.weeks[1];
-					
-					PlayState.curWeek = daWeek.weekFile;
-					PlayState.songDiff = "normal";
-					PlayState.isStoryMode = true;
-					PlayState.weekScore = 0;
-
-					var songList:Array<String> = [];
-					for(song in daWeek.songs)
-						songList.push(song[0]);
-					
-					PlayState.playList = songList;
-					PlayState.loadSong(songList[0]);
-					
-					Main.switchState(new LoadingState());
-				case "freeplay":
-					Main.switchState(new states.menu.FreeplayState());
-
+				case "play":
+                    Main.switchState(new states.menu.FreeplayState());
 				case "credits":
 					Main.switchState(new states.menu.CreditsState());
-						
 				case "options":
 					openSubState(new subStates.options.OptionsSubState());
 					
@@ -112,15 +108,11 @@ class DebugState extends MusicBeatState
 
 			var daBold = (curSelected == item.ID);
 
-			if(item.bold != daBold)
-			{
-				item.bold = daBold;
-				if(daBold)
-					item.text = '> ' + daText + ' <';
-				else
-					item.text = daText;
-				item.x = FlxG.width / 2;
-			}
+			if(daBold)
+				item.text = '> ' + daText + ' <';
+			else
+				item.text = daText;
+			item.x = FlxG.width / 2;
 		}
 	}
 }

@@ -37,6 +37,8 @@ class LoadingState extends MusicBeatState
 	
 	var loadBar:FlxSprite;
 	var loadPercent:Float = 0;
+
+	var bg:FlxSprite;
 	
 	function addBehind(item:FlxBasic)
 	{
@@ -53,12 +55,13 @@ class LoadingState extends MusicBeatState
 		var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFF000000);
 		color.screenCenter();
 		add(color);
-
-		var loadingTxt = new FlxText(0,0,0,"Loading...");
-		loadingTxt.setFormat(Main.gFont, 40, 0xFFFFFFFF, LEFT);
-		loadingTxt.x = 5;
-		loadingTxt.y = FlxG.height - loadingTxt.height - 15;
-		add(loadingTxt);
+				
+		// loading image
+		bg = new FlxSprite().loadGraphic(Paths.image('loading'));
+		bg.scale.set(1.1,1.1);
+		bg.updateHitbox();
+		bg.screenCenter();
+		add(bg);
 		
 		loadBar = new FlxSprite().makeGraphic(FlxG.width - 16, 20, 0xFFFFFFFF);
 		loadBar.y = FlxG.height - loadBar.height + 10;
@@ -191,6 +194,17 @@ class LoadingState extends MusicBeatState
 			Main.skipClearMemory = true;
 			Main.switchState(new PlayState());
 		}
+
+		if(Controls.justPressed(ACCEPT))
+		{
+			bg.scale.x += 0.04;
+			bg.scale.y += 0.04;
+		}
+
+		var bgCalc = FlxMath.lerp(bg.scale.x, 1, elapsed * 6);
+		bg.scale.set(bgCalc, bgCalc);
+		bg.updateHitbox();
+		bg.screenCenter();
 		
 		changeBarSize(FlxMath.lerp(loadBar.scale.x, loadPercent, elapsed * 6));
 	}

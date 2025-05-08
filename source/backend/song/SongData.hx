@@ -49,18 +49,18 @@ class SongData
 		{
 			songs: [
 				['vfunkin', 	'vsilva'],
-				['bruj', 		'vsilva'],
 			],
-			weekFile: 'week1',
-			weekName: 'daddy dearest',
-			chars: ['dad', 'bf', 'gf'],
-			diffs: ['hard'],
+			weekFile: 'vfunkin',
+			weekName: 'vfunkin',
+			diffs: ['hard', 'remix'],
 		},
 		{
 			songs: [
-				["useless",			"dad"]
+				['bruj', 		'vsilva'],
 			],
-			freeplayOnly: true,
+			weekFile: 'bruj',
+			weekName: 'bruj',
+			diffs: ['hard'],
 		},
 	];
 

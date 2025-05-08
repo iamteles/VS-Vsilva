@@ -78,8 +78,14 @@ class CreditsState extends MusicBeatState
 		// :D
 		
 		if(!doido) {
-			addCredit('teles', 					'doido/teles', 	 	"Placeholder for mod / engine credits",	'https://www.youtube.com/@telesfnf');
-			addCredit('Doido Engine ~ Kai', 	'doido', 	  	"Press ACCEPT to see engine credits",	'_DOIDO', 0xFFFFFFFF);
+			addCredit('Pi3tr0', 					'pi3tro', 	 	"Director and Charter",	'https://x.com/Pi3tr03');
+			addCredit('teles', 						'teles', 	 	"Musician and Coder",	'https://www.youtube.com/@telesfnf');
+			addCredit('AnakimPlay', 				'anakimplay', 	 	"Musician",	'https://x.com/AnakimPlay');
+			addCredit('Julitolito', 				'julito', 	 	"Sprite Artist and Animator",	'https://x.com/oJulitolito');
+			addCredit('BeastlyYoshiNG', 			'yoshi', 	 	"BG Artist",	'https://x.com/yoshizitosNG');
+			addCredit('Rascunho', 					'rascunho', 	 	"Icon Artist");
+			addCredit('Vitor0502', 					'vito', 	 	"Original Chromatic",	'https://x.com/Vitor_0502');
+			addCredit('Doido Engine ~ Kai', 		'doido', 	  	"Press ACCEPT to see engine credits",	'_DOIDO', 0xFFFFFFFF);
 		}
 		else {
 			addCredit('DiogoTV', 			'diogotv', 	  "Doido Engine's Owner and Main Coder", 							'https://bsky.app/profile/diogotv.bsky.social');
@@ -92,7 +98,7 @@ class CreditsState extends MusicBeatState
 			addCredit('doubleonikoo', 		'nikoo', 	  "didn't really do much but i already made this icon so you can stay... for now\n-DiogoTV",	'https://bsky.app/profile/doubleonikoo.bsky.social');
 			addCredit('Github Contributors','github', 	  'Thank you\n${specialCoders}!!', 		'https://github.com/DoidoTeam/FNF-Doido-Engine/graphs/contributors');
 			addCredit('Special Thanks', 	'heart', 	  'Thank you\n${specialPeople}!!', "https://youtu.be/Fo7L8p1I_Hw");
-			addCredit('MOD', 		'mod', 	  	  "Press ACCEPT to return to mod credits",	'_MOD');
+			addCredit('NNM Team', 		'nnm', 	  	  "Press ACCEPT to return to mod credits",	'_MOD', 0xFFFFFFFF);
 		}
 		
 		for(i in 0...creditList.length)
@@ -116,7 +122,7 @@ class CreditsState extends MusicBeatState
 			// big ears
 			if(credit.icon == "anna")
 				icon.offset.y = 30;
-			if(credit.icon == "tagaki" || credit.icon == "doido" || credit.icon == "br")
+			if(credit.icon == "tagaki" || credit.icon == "doido" || credit.icon == "nnm")
 				icon.offset.x = -10;
 
 			item.icon = icon;
