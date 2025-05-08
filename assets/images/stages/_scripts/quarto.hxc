@@ -1,10 +1,15 @@
 function create() {
-    dadPos.x -= 100;
-    dadCam.y += 150;
+    //dadPos.x -= 100;
+    //dadCam.y += 150;
+
+    bfCam.y += 100;
+    gfCam.y -= 180;
+    gfCam.x -= 200;
 
     this.gfVersion = "no-gf";
-    this.camZoom = 0.7;
+    this.camZoom = 0.83;
 
-    var bg = new FlxSprite(-640, -1000).loadGraphic(Paths.image("stages/mugen/mugen"));
+    var bg = new FlxSprite(0, -70).loadGraphic(Paths.image("stages/quarto"));
+    bg.scale.set(1.5,1.5);
     add(bg);
 }
