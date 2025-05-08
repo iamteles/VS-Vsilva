@@ -1,0 +1,8 @@
+.git/
+.haxelib/
+export/
+.vscode/launch.json
+RECOVER_*.fla
+.DS_Store
+.AppleDouble
+.LSOverride
