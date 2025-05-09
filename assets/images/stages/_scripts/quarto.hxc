@@ -3,6 +3,8 @@ function create() {
     //dadCam.y += 150;
 
     bfCam.y += 100;
+    dadCam.x += 14;
+    dadCam.y -= 30;
     gfCam.y -= 180;
     gfCam.x -= 200;
 
